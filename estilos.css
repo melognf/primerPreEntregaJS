@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #1f1e1e;
+}
+
+.cartel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 100px;
+    padding: 50px;
+    font-family: 'Rampart One', cursive;
+    color: #007fff;
+}
+
+img {
+    width: 800px;
+    height: 600px;
+    padding: 50px;
+}
