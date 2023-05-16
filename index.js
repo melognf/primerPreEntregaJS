@@ -1,4 +1,4 @@
-let cliente = prompt("Por favor ingresa tu nombre");
+let cliente = prompt("Por favor ingresa tu nombre").toUpperCase();
 alert("Hola " + cliente +"!! bienvenid@ a VIAJEX!!");
 
 let destinoContinental = "";
@@ -8,199 +8,260 @@ function CalculoEstadia(cantidadDias) {
     totalEstadia = cantidadDias * precioPorDia;
 }
 
-function elige() {
-    destinoContinental = prompt("Por favor elige el continente de tu destino").toUpperCase();
+function elegirContinente() {
+    let conti = prompt(`Estimad@ ${cliente} a que continente deseas viajar?, por favor ingresa el número:
+1) Asia
+2) Africa
+3) America
+4) Europa`);
+    return conti;
 }
 
+function validarContinente(continente) {
 
+    if(continente == null){
+        return;
+    }
+    continente = Number(continente);
 
-
-elige();
-
-switch(destinoContinental){
-    case "ASIA":
-        let opcionAsia = Number(prompt(`Por el momento tenemos los siguientes destinos para este continente. Elija una opcion:
-        1)Japon
-        2)China
-        3)Corea del Sur
-        4)India`));
-        while(isNaN(opcionAsia) || (opcionAsia<1 || opcionAsia>4)){
-            alert("No ingresaste valor numerico o un numero valido");
-            opcionAsia = Number(prompt(`Por el momento tenemos los siguientes destinos para este continente. Elija una opcion:
-        1)Japon
-        2)China
-        3)Corea del Sur
-        4)India`));
+    while(isNaN(continente) || continente<0 || continente>4){
+        alert(cliente + " has ingresado una opcion incorrecta. Ingresa un número del 1 al 4.");
+        continente = elegirContinente();
+        if(continente == null){
+            return;
         }
-        switch(opcionAsia){
-            case 1:
-                        alert("Usted eligio como destino estados Japon");
-                        precioPorDia = 4000;
-                        cantidadDias = Number(prompt("Cuantos dias desea permaneces en estados Japon?"));
-                        CalculoEstadia(cantidadDias);
-                        alert("usted debera abonar US$"+ totalEstadia);
-                        break;
-                        case 2:
-                        alert("Usted eligio como destino China");
-                        precioPorDia = 5000;
-                        cantidadDias = Number(prompt("Cuantos dias desea permaneces en China?"));
-                        CalculoEstadia(cantidadDias);
-                        alert("usted debera abonar US$"+ totalEstadia);
-                        break;
-                        case 3:
-                        alert("Usted eligio como destino Corea del Sur");
-                        precioPorDia = 4500;
-                        cantidadDias = Number(prompt("Cuantos dias desea permaneces en Corea del Sur?"));
-                        CalculoEstadia(cantidadDias);
-                        alert("usted debera abonar US$"+ totalEstadia);
-                        break;
-                        case 4:
-                        alert("Usted eligio como destino India");
-                        precioPorDia = 7000;
-                        cantidadDias = Number(prompt("Cuantos dias desea permaneces en India?"));
-                        CalculoEstadia(cantidadDias);
-                        alert("usted debera abonar US$"+ totalEstadia);
-                        break;
-        }break;
-    case "AFRICA":
-        let opcionAfrica = Number(prompt(`Por el momento tenemos los siguientes destinos para este continente
-        1)Sudafrica
-        2)Nigeria
-        3)Marruecos`));
-        while(isNaN(opcionAfrica) || (opcionAfrica<1 || opcionAfrica>3)){
-            alert("No ingresaste valor numerico o un numero valido");
-            opcionAfrica = Number(prompt(`Por el momento tenemos los siguientes destinos para este continente
-            1)Sudafrica
-            2)Nigeria
-            3)Marruecos`));
-        }
-        switch(opcionAfrica){
-            case 1:
-            alert("Usted eligio como destino Sudafrica");
-            precioPorDia = 4000;
-            cantidadDias = Number(prompt("Cuantos dias desea permaneces en Sudafrica?"));
-            CalculoEstadia(cantidadDias);
-            alert("usted debera abonar US$"+ totalEstadia);
-            break;
-            case 2:
-            alert("Usted eligio como destino Nigeria");
-            precioPorDia = 5000;
-            cantidadDias = Number(prompt("Cuantos dias desea permaneces en Nigeria?"));
-            CalculoEstadia(cantidadDias);
-            alert("usted debera abonar US$"+ totalEstadia);
-            break;
-            case 3:
-            alert("Usted eligio como destino Marruecos");
-            precioPorDia = 4500;
-            cantidadDias = Number(prompt("Cuantos dias desea permaneces en Marruecos?"));
-            CalculoEstadia(cantidadDias);
-            alert("usted debera abonar US$"+ totalEstadia);
-            break;
-        }
-        break;
-    case "AMERICA":
-                let opcionAmerica = Number(prompt(`Por el momento tenemos los siguientes destinos para este continente
-                1)Estados Unidos
-                2)Colombia
-                3)Mexico
-                4)Uruguay`));
-                while(isNaN(opcionAmerica) || (opcionAmerica<1 || opcionAmerica>4)){
-                    alert("No ingresaste valor numerico o un numero valido");
-                    opcionAmerica = Number(prompt(`Por el momento tenemos los siguientes destinos para este continente
-                1)Estados Unidos
-                2)Colombia
-                3)Mexico
-                4)Uruguay`));
+    }
+    mostrarPaises(continente);
+}
+
+validarContinente(elegirContinente());
+
+function paisesAsia() {
+    alert(`Por el momento tenemos los siguientes destinos para este continente:
+1)Japon
+2)China
+3)Corea del Sur
+4)India`);
+            let elijaPais = Number(prompt("Por favor elija una opcion. Agregue el numero del país que usted eligió como destino:"));
+
+            if(elijaPais == null){
+                return;
+            }
+
+            while(isNaN(elijaPais) || elijaPais<0 || elijaPais>4){
+                alert(cliente + " has ingresado una opcion incorrecta. Ingresa un número del 1 al 4.");
+                elijaPais = paisesAsia();
+                if(elijaPais == null){
+                    return;
                 }
-                switch(opcionAmerica){
-                        case 1:
-                        alert("Usted eligio como destino estados Unidos");
-                        precioPorDia = 4000;
-                        cantidadDias = Number(prompt("Cuantos dias desea permaneces en estados Unidos?"));
-                        CalculoEstadia(cantidadDias);
-                        alert("usted debera abonar US$"+ totalEstadia);
-                        break;
-                        case 2:
-                        alert("Usted eligio como destino Colombia");
-                        precioPorDia = 5000;
-                        cantidadDias = Number(prompt("Cuantos dias desea permaneces en Colombia?"));
-                        CalculoEstadia(cantidadDias);
-                        alert("usted debera abonar US$"+ totalEstadia);
-                        break;
-                        case 3:
-                        alert("Usted eligio como destino Mexico");
-                        precioPorDia = 4500;
-                        cantidadDias = Number(prompt("Cuantos dias desea permaneces en Mexico?"));
-                        CalculoEstadia(cantidadDias);
-                        alert("usted debera abonar US$"+ totalEstadia);
-                        break;
-                        case 4:
-                        alert("Usted eligio como destino Uruguay");
-                        precioPorDia = 7000;
-                        cantidadDias = Number(prompt("Cuantos dias desea permaneces en Uruguay?"));
-                        CalculoEstadia(cantidadDias);
-                        alert("usted debera abonar US$"+ totalEstadia);
-                        break;
-                }
-                break;
-    case "EUROPA":
-        let opcionEuropa = Number(prompt(`Por el momento tenemos los siguientes destinos para este continente
-        1)Inglaterra
-        2)Italia
-        3)Alemania
-        4)Francia`));
-        while(isNaN(opcionEuropa) || (opcionEuropa<1 || opcionEuropa>4)){
-            alert("No ingresaste valor numerico o un numero valido");
-            opcionEuropa = Number(prompt(`Por el momento tenemos los siguientes destinos para este continente
-        1)Inglaterra
-        2)Italia
-        3)Alemania
-        4)Francia`));
-        }
-        switch(opcionEuropa){
-            case 1:
-                alert("Usted eligio como destino estados Inglaterra");
+
+            }
+            switch(elijaPais){
+                case 1:
+                alert("Usted eligio como destino JAPON");
                 precioPorDia = 4000;
-                cantidadDias = Number(prompt("Cuantos dias desea permaneces en estados Inglaterra?"));
+                cantidadDias = Number(prompt("Cuantos dias desea permanecer en JAPON?"));
                 CalculoEstadia(cantidadDias);
                 alert("usted debera abonar US$"+ totalEstadia);
                 break;
                 case 2:
-                alert("Usted eligio como destino Italia");
+                alert("Usted eligio como destino CHINA");
                 precioPorDia = 5000;
-                cantidadDias = Number(prompt("Cuantos dias desea permaneces en Italia?"));
+                cantidadDias = Number(prompt("Cuantos dias desea permanecer en CHINA?"));
                 CalculoEstadia(cantidadDias);
                 alert("usted debera abonar US$"+ totalEstadia);
                 break;
                 case 3:
-                alert("Usted eligio como destino Alemania");
+                alert("Usted eligio como destino COREA DEL SUR");
                 precioPorDia = 4500;
-                cantidadDias = Number(prompt("Cuantos dias desea permaneces en Alemania?"));
+                cantidadDias = Number(prompt("Cuantos dias desea permanecer en COREA DEL SUR?"));
                 CalculoEstadia(cantidadDias);
                 alert("usted debera abonar US$"+ totalEstadia);
                 break;
                 case 4:
-                alert("Usted eligio como destino Francia");
+                alert("Usted eligio como destino INDIA");
                 precioPorDia = 7000;
-                cantidadDias = Number(prompt("Cuantos dias desea permaneces en Francia?"));
+                cantidadDias = Number(prompt("Cuantos dias desea permanecer en INDIA?"));
                 CalculoEstadia(cantidadDias);
                 alert("usted debera abonar US$"+ totalEstadia);
                 break;
-        }
-        break;
-    case "OCEANIA":
-        alert("No tenemos destinos disponibles por el momento para este continente");
-        break;
-    case "ANTARTIDA":
-            alert("No tenemos destinos disponibles por el momento para este continente");
-            break;
-        default:
-            alert("No has ingresado un continente, prueba con(Europa, America, Asia o Africa");
+            }
+}
+
+function paisesAfrica() {
+alert(`Por el momento tenemos los siguientes destinos para este continente:
+1)Sudafrica
+2)Nigeria
+3)Marruecos`);
+            let elijaPais = Number(prompt("Por favor elija una opcion. Agregue el numero del país que usted eligió como destino:"));
+
+            if(elijaPais == null){
+                return;
+            }
+
+            while(isNaN(elijaPais) || elijaPais<0 || elijaPais>4){
+                alert(cliente + " has ingresado una opcion incorrecta. Ingresa un número del 1 al 3.");
+                elijaPais = paisesAfrica();
+                if(elijaPais == null){
+                    return;
+                }
+
+            }
+
+            switch(elijaPais){
+                case 1:
+                alert("Usted eligio como destino SUDAFRICA");
+                precioPorDia = 4000;
+                cantidadDias = Number(prompt("Cuantos dias desea permanecer en SUDAFRICA?"));
+                CalculoEstadia(cantidadDias);
+                alert("usted debera abonar US$"+ totalEstadia);
+                break;
+                case 2:
+                alert("Usted eligio como destino NIGERIA");
+                precioPorDia = 5000;
+                cantidadDias = Number(prompt("Cuantos dias desea permanecer en NIGERIA?"));
+                CalculoEstadia(cantidadDias);
+                alert("usted debera abonar US$"+ totalEstadia);
+                break;
+                case 3:
+                alert("Usted eligio como destino MARRUECOS");
+                precioPorDia = 4500;
+                cantidadDias = Number(prompt("Cuantos dias desea permanecer en MARRUECOS?"));
+                CalculoEstadia(cantidadDias);
+                alert("usted debera abonar US$"+ totalEstadia);
+                break;
+                case 4:
+            }
+}
+
+function paisesAmerica() {
+alert(`Por el momento tenemos los siguientes destinos para este continente:
+1)Estados Unidos
+2)Colombia
+3)Mexico
+4)Uruguay`);
+    
+            let elijaPais = Number(prompt("Por favor elija una opcion. Agregue el numero del país que usted eligió como destino:"));
+
+            if(elijaPais == null){
+                return;
+            }
+
+            while(isNaN(elijaPais) || elijaPais<0 || elijaPais>4){
+                alert(cliente + " has ingresado una opcion incorrecta. Ingresa un número del 1 al 4.");
+                elijaPais = paisesAmerica();
+                if(elijaPais == null){
+                    return;
+                }
+
+            }
+
+            switch(elijaPais){
+                case 1:
+                alert("Usted eligio como destino ESTADOS UNIDOS");
+                precioPorDia = 4000;
+                cantidadDias = Number(prompt("Cuantos dias desea permanecer en ESTADOS UNIDOS?"));
+                CalculoEstadia(cantidadDias);
+                alert("usted debera abonar US$"+ totalEstadia);
+                break;
+                case 2:
+                alert("Usted eligio como destino COLOMBIA");
+                precioPorDia = 5000;
+                cantidadDias = Number(prompt("Cuantos dias desea permanecer en COLOMBIA?"));
+                CalculoEstadia(cantidadDias);
+                alert("usted debera abonar US$"+ totalEstadia);
+                break;
+                case 3:
+                alert("Usted eligio como destino MEXICO");
+                precioPorDia = 4500;
+                cantidadDias = Number(prompt("Cuantos dias desea permanecer en MEXICO?"));
+                CalculoEstadia(cantidadDias);
+                alert("usted debera abonar US$"+ totalEstadia);
+                break;
+                case 4:
+                alert("Usted eligio como destino URUGUAY");
+                precioPorDia = 7000;
+                cantidadDias = Number(prompt("Cuantos dias desea permanecer en URUGUAY?"));
+                CalculoEstadia(cantidadDias);
+                alert("usted debera abonar US$"+ totalEstadia);
+                break;
+            }
+}
+
+function paisesEuropa() {
+alert(`Por el momento tenemos los siguientes destinos para este continente:
+1)Inglaterra
+2)Italia
+3)Alemania
+4)Francia`);
+            let elijaPais = Number(prompt("Por favor elija una opcion. Agregue el numero del país que usted eligió como destino:"));
+
+            if(elijaPais == null){
+                return;
+            }
+
+            while(isNaN(elijaPais) || elijaPais<0 || elijaPais>4){
+                alert(cliente + " has ingresado una opcion incorrecta. Ingresa un número del 1 al 4.");
+                elijaPais = paisesEuropa();
+                if(elijaPais == null){
+                    return;
+                }
+
+            }
+
+            switch(elijaPais){
+                case 1:
+                alert("Usted eligio como destino INGLATERRA");
+                precioPorDia = 4000;
+                cantidadDias = Number(prompt("Cuantos dias desea permanecer en INGLATERRA?"));
+                CalculoEstadia(cantidadDias);
+                alert("usted debera abonar US$"+ totalEstadia);
+                break;
+                case 2:
+                alert("Usted eligio como destino ITALIA");
+                precioPorDia = 5000;
+                cantidadDias = Number(prompt("Cuantos dias desea permanecer en ITALIA?"));
+                CalculoEstadia(cantidadDias);
+                alert("usted debera abonar US$"+ totalEstadia);
+                break;
+                case 3:
+                alert("Usted eligio como destino ALEMANIA");
+                precioPorDia = 4500;
+                cantidadDias = Number(prompt("Cuantos dias desea permanecer en ALEMANIA?"));
+                CalculoEstadia(cantidadDias);
+                alert("usted debera abonar US$"+ totalEstadia);
+                break;
+                case 4:
+                alert("Usted eligio como destino FRANCIA");
+                precioPorDia = 7000;
+                cantidadDias = Number(prompt("Cuantos dias desea permanecer en FRANCIA?"));
+                CalculoEstadia(cantidadDias);
+                alert("usted debera abonar US$"+ totalEstadia);
+                break;
+            }
 }
 
 
+function mostrarPaises(continente) {
+    if(continente === 1){
+         paisesAsia();
+    }else if(continente === 2){
+        paisesAfrica();
+    }else if(continente === 3){
+        paisesAmerica();
+    }else if(continente === 4){
+        paisesEuropa();
+    }else{
+        validarContinente(continente);
+    }
 
+    let otraCompra = confirm(cliente + " desea comprar otro viaje?");
 
+    if(otraCompra){
+        validarContinente(elegirContinente());
+    }else{
+        alert("Gracias por confiar en nosotros. Nos estaremos comunicando con usted para arreglar todos los detalles");
+    }
 
-
+}
 
