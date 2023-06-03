@@ -5,7 +5,7 @@ let destinoContinental = "";
 let totalEstadia = 0;
 
 function CalculoEstadia(cantidadDias) {
-    totalEstadia = cantidadDias * precioPorDia;
+    totalEstadia += cantidadDias * precioPorDia;
 }
 
 function elegirContinente() {
